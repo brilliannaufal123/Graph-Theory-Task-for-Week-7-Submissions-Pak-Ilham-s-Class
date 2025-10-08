@@ -1,3 +1,10 @@
+| Name | NRP | Class |
+| Bismantaka Revano Dirgantara | 5025241075 | IUP |
+| Naufal Bintang Brillian | 5025241168 | IUP |
+| Stephanie Gabriella Adiseputra | 5025241081 | IUP |
+|...|...|...|
+
+
 # Graph-Theory-Task-for-Week-7-Submissions-Pak-Ilham-s-Class
 
 **The Knight's Tour**
