@@ -1,9 +1,10 @@
+```
 | Name | NRP | Class |
 | Bismantaka Revano Dirgantara | 5025241075 | IUP |
 | Naufal Bintang Brillian | 5025241168 | IUP |
 | Stephanie Gabriella Adiseputra | 5025241081 | IUP |
 |...|...|...|
-
+```
 
 # Graph-Theory-Task-for-Week-7-Submissions-Pak-Ilham-s-Class
 
@@ -25,6 +26,7 @@ Example Input
 5 5 
 2 2 
 Example Output 
+```
 2 2 
 4 1 
 2 0 
@@ -50,6 +52,7 @@ Example Output
 0 4 
 1 2 
 0 0
+```
 
 
 ## Traveling Salesman Problem (TSP)
