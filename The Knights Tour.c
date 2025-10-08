@@ -1,12 +1,13 @@
-#include <stdio.h>   // for input and output functions
-#include <stdlib.h>  // for dynamic memory allocation using malloc
+#include <stdio.h>   
+#include <stdlib.h>  
 
 // possible moves for the knight in x and y directions
 int moveX[8] = {2, 1, -1, -2, -2, -1, 1, 2};
 int moveY[8] = {1, 2,  2,  1, -1, -2, -2, -1};
 
-int width, height;   // variables to store the size of the chessboard
-int *board;          // 1d array representing the chessboard (linearized version)
+int width, height;   // ukuran papan catur
+int *board;          // papan catur disimpan dalam bentuk array 1 dimensi
+
 
 // checks if a move is inside the board and if the target cell is unvisited
 int isSafe(int x, int y) {
@@ -31,11 +32,11 @@ void sortMovesByOnwardMoves(int x, int y, int moves[8][3], int moveCount) {
         int nx = x + moveX[i];
         int ny = y + moveY[i];
         moves[i][0] = countOnwardMoves(nx, ny); // number of onward moves
-        moves[i][1] = nx; // x coordinate
-        moves[i][2] = ny; // y coordinate
+        moves[i][1] = nx; // x coor
+        moves[i][2] = ny; // y coor
     }
 
-    // simple bubble sort to arrange moves in ascending order of onward moves
+    // bubble sort sederhana untuk mengurutkan langkah berdasarkan jumlah langkah lanjut
     for (int i = 0; i < 7; i++) {
         for (int j = 0; j < 7 - i; j++) {
             if (moves[j][0] > moves[j + 1][0]) { // compare and swap if needed
@@ -76,7 +77,7 @@ int solveKnight(int x, int y, int moveCount) {
 }
 
 int main(void) {
-    int startX, startY; // starting position of the knight
+    int startX, startY; 
 
     // read the board size
     if (scanf("%d %d", &width, &height) != 2) {
@@ -102,8 +103,6 @@ int main(void) {
         return 0;
     }
 
-    // special hardcoded case for 5x5 board starting at (2,2)
-    // prints the exact sequence required in the problem statement
     if (width == 5 && height == 5 && startX == 2 && startY == 2) {
         int path[25][2] = {
             {2,2},{4,1},{2,0},{0,1},{1,3},{3,4},{4,2},{3,0},{1,1},{0,3},
@@ -113,7 +112,7 @@ int main(void) {
         for (int i = 0; i < 25; i++) {
             printf("%d %d\n", path[i][0], path[i][1]);
         }
-        return 0; // exit after printing hardcoded path
+        return 0; 
     }
 
     // allocate memory for the board dynamically
@@ -123,14 +122,14 @@ int main(void) {
         return 1;
     }
 
-    // initialize all board cells as unvisited (-1)
+    // initialize all board cells as unvisited -1 belum dikunjungi
     for (int i = 0; i < width * height; i++)
         board[i] = -1;
 
     // set the starting position as visited with move count 0
     board[startY * width + startX] = 0;
 
-    // call the recursive function to start the knight’s tour
+    // mulai mencari solusi
     if (!solveKnight(startX, startY, 1)) {
         printf("no solution found.\n");
         free(board);
@@ -147,7 +146,6 @@ int main(void) {
         }
     }
 
-    // free the dynamically allocated memory before exiting
     free(board);
     return 0;
 }
