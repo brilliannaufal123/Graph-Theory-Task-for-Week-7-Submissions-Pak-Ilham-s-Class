@@ -7,7 +7,50 @@
 
 # Graph-Theory-Task-for-Week-7-Submissions-Pak-Ilham-s-Class
 
-**The Knight's Tour**
+## The Knight's Tour
+
+This program implements the Knight’s Tour problem using Warnsdorff’s heuristic and backtracking. The goal is to move a knight across a chessboard so that every square is visited exactly once. 
+The program first reads the board size (width, height) and starting position (startX, startY) from input. 
+For general cases, the board is represented as a 1D array where all cells are initialized to -1 to mark them as unvisited, and the starting position is marked as 0. 
+The algorithm applies Warnsdorff’s heuristic by sorting all possible next moves based on how many onward moves they allow, preferring those with fewer options to avoid dead ends. 
+If a move leads to a dead end, backtracking is used to undo the previous move and try another. Once all cells are visited, the program outputs the coordinates in order of visitation. 
+The main functions are: 
+isSafe(x, y) to check if a move is valid and unvisited
+countOnwardMoves(x, y) to count onward moves from a given square
+sortMovesByOnwardMoves(x, y, moves, moveCount) to sort moves using Warnsdorff’s heuristic. 
+
+The input format is two lines: the first for board dimensions (width height) and the second for the starting position (startX startY).
+Using the classroom's sample input/output, we get the following results:
+Example Input 
+5 5 
+2 2 
+Example Output 
+2 2 
+4 1 
+2 0 
+0 1 
+1 3 
+3 4 
+4 2 
+3 0 
+1 1 
+0 3 
+2 4 
+4 3 
+3 1 
+1 0 
+0 2 
+1 4 
+3 3 
+2 1 
+4 0 
+3 2 
+4 4 
+2 3 
+0 4 
+1 2 
+0 0
+
 
 ## Traveling Salesman Problem (TSP)
 
