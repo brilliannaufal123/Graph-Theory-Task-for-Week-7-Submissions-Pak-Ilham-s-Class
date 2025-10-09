@@ -14,14 +14,14 @@ struct Edge {
 class Graph {
     int n;
     vector<vector<Edge>> adj;
-    vector<string> edgeName;
+    vector<int> edgeName;
 
 public:
     Graph(int nodes) : n(nodes) {
         adj.resize(n);
     }
 
-    void addEdge(string name, int u, int v, int w, int id) {
+    void addEdge(int name, int u, int v, int w, int id) {
         edgeName.push_back(name);
         adj[u].push_back({v, w, id, false});
         adj[v].push_back({u, w, id, false});
@@ -81,7 +81,7 @@ int main() {
     Graph g(n);
 
     for (int i = 0; i < m; ++i) {
-        string name;
+        int name;
         int u, v, w;
         cin >> name >> u >> v >> w;
         g.addEdge(name, u, v, w, i);
@@ -92,7 +92,7 @@ int main() {
 
     auto [route, cost] = g.hierholzer(start);
 
-    cout << "Eulerian Circuit (edge names): ";
+    cout << "Route: ";
     for (auto &e : route) cout << e << " ";
     cout << "\nTotal cost: " << cost << "\n";
 }
