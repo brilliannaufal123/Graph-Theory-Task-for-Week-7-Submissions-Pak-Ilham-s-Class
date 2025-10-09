@@ -8,56 +8,101 @@
 
 # Graph-Theory-Task-for-Week-7-Submissions-Pak-Ilham-s-Class
 
-## The Knight's Tour
+## Knight's Tour
+This program implements the **Knight's Tour problem** using **Warnsdorff’s heuristic** and **backtracking**.  
+The goal is to move a knight across a chessboard so that every square is visited exactly once.
 
-This program implements the Knight’s Tour problem using Warnsdorff’s heuristic and backtracking. The goal is to move a knight across a chessboard so that every square is visited exactly once. 
-The program first reads the board size (width, height) and starting position (startX, startY) from input. 
-For general cases, the board is represented as a 1D array where all cells are initialized to -1 to mark them as unvisited, and the starting position is marked as 0. 
+The program first reads the board dimensions (`width` and `height`) and the starting position of the knight (`startX` and `startY`).  
+It represents the chessboard as a **1D array** where all cells are initialized as unvisited (`-1`) and the starting cell is marked as visited (`0`).
 
-The algorithm applies Warnsdorff’s heuristic by sorting all possible next moves based on how many onward moves they allow, preferring those with fewer options to avoid dead ends. 
-If a move leads to a dead end, backtracking is used to undo the previous move and try another. Once all cells are visited, the program outputs the coordinates in order of visitation. 
+To decide the next move, the program uses **Warnsdorff’s heuristic**: it chooses the move with the fewest onward moves first to avoid dead ends.  
+If a move leads to a dead end, the program **backtracks** and tries another move.  
+Once all squares are visited, the program outputs the knight’s path in the order of visitation.
 
-The main functions are: 
-isSafe(x, y) to check if a move is valid and unvisited
-countOnwardMoves(x, y) to count onward moves from a given square
-sortMovesByOnwardMoves(x, y, moves, moveCount) to sort moves using Warnsdorff’s heuristic. 
+---
 
-The input format is two lines: the first for board dimensions (width height) and the second for the starting position (startX startY).
-Using the classroom's sample input/output, we get the following results:
+### The main functions are:
 
-Example Input 
+* **isSafe(x, y)**  
+  -Checks whether the square `(x, y)` is inside the board and unvisited.  
+  -Returns `1` if valid, `0` otherwise.
+
+* **countOnwardMoves(x, y)**  
+  -Counts the number of valid moves the knight can make from `(x, y)`.  
+  -Used by Warnsdorff’s heuristic to prioritize moves with fewer onward options.
+
+* **sortMovesByOnwardMoves(x, y, moves, moveCount)**  
+  -Sorts all 8 possible knight moves from `(x, y)` in ascending order of onward moves.  
+  -Helps reduce dead ends and makes backtracking more efficient.
+
+* **solveKnight(x, y, moveCount)**  
+  -Recursively performs the Knight’s Tour.  
+  -Marks the current cell, sorts the next moves, tries each move recursively, and backtracks if needed.  
+  Returns `1` if a complete tour is found, `0` if no solution exists from the current path.
+
+* **main()**  
+  -Handles input for board size and starting position.  
+  -Initializes the board, starts the recursion, and prints the final path.  
+  -Also handles memory allocation and deallocation.
+
+---
+
+### Input Format
+
+The input consists of:
+
+1. Two integers for board dimensions: `width height`
+2. Two integers for the starting position: `startX startY`
+
+> Coordinates are 0-based. `(0,0)` represents the top-left corner of the board.
+
+---
+
+### Example Input
 ```
-5 5 
+5 5
 2 2
 ```
-Example Output 
+
+### Example Output
 ```
-2 2 
-4 1 
-2 0 
-0 1 
-1 3 
-3 4 
-4 2 
-3 0 
-1 1 
-0 3 
-2 4 
-4 3 
-3 1 
-1 0 
-0 2 
-1 4 
-3 3 
-2 1 
-4 0 
-3 2 
-4 4 
-2 3 
-0 4 
-1 2 
+2 2
+4 1
+2 0
+0 1
+1 3
+3 4
+4 2
+3 0
+1 1
+0 3
+2 4
+4 3
+3 1
+1 0
+0 2
+1 4
+3 3
+2 1
+4 0
+3 2
+4 4
+2 3
+0 4
+1 2
 0 0
+
 ```
+
+### Explanation
+
+The knight starts at `(2,2)`:
+
+* Each line shows the knight’s position in the order it is visited.  
+* The algorithm chooses the next move based on Warnsdorff’s heuristic to minimize dead ends.  
+* The output represents a **complete tour**, visiting all 25 squares exactly once.
+
+
 
 
 ## Traveling Salesman Problem (TSP)
